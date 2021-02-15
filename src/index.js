@@ -3,10 +3,14 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import { GameProvider } from './contexts/gamecontext';
+import {initState, gameReducer} from './contexts/gamereducer';
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <GameProvider initState={initState} reducer={gameReducer}>
+      <App />
+    </GameProvider>
   </React.StrictMode>,
   document.getElementById('root')
 );

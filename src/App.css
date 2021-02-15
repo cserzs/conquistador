@@ -1,38 +1,449 @@
-.App {
-  text-align: center;
+:root {
+  --card-bgcolor: #61dafb;
+  --card-bgcolor: #ff9048;
+  --card-bgcolor-selected: #ff771e;
+  --card-width: 180px;
+  --card-height: 200px;
+  --card-margin: 5px;
+  --card-padding: 20px;
+  --card-border-radius: 10px;
+  --card-shadow: -5px 5px 0px 0px #777777;
+  --card-inner-box-bgcolor: #ac673d;
+  --card-hr-color: salmon;
+  --card-inner-box-height: 110px;
+  --button-min-width: 200px;
+}
+/*
+@font-face {
+  font-family: PinkChicken;
+  src: url(PinkChicken-Regular.ttf);
+}
+*/
+
+@font-face {
+  font-family: Stanberry;
+  src: url('./static/stanberry/Stanberry.ttf');
+}
+@font-face {
+  font-family: Comfortaa;
+  src: url('./static/comfortaa/Comfortaa-Regular.ttf');
+}
+@font-face {
+    font-family: OldLondon;
+    src: url('./static/OldLondon.ttf');
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+
+body {
+	font-family: "Comfortaa", cursive;
+	/*font-family: 'Pacifico', cursive;*/
+	font-size: 16px;
+    background-image: url("./static/bg/mountain.png");
+    background-color: rgb(67,57,77,1);  
+    background-repeat: no-repeat;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.button {
+  font-family: "Comfortaa";
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+  outline: none;
+  border: 0;
+  vertical-align: middle;
+  text-decoration: none;
+  font-size: inherit;
+  font-family: inherit;
+    font-weight: 600;
+    color: #382b22;
+    text-transform: uppercase;
+    padding: 1.25em 2em;
+    background: #fff0f0;
+    border: 2px solid #b18597;
+    border-radius: 0.75em;
+    transform-style: preserve-3d;
+    transition: transform 150ms cubic-bezier(0, 0, 0.58, 1), background 150ms cubic-bezier(0, 0, 0.58, 1);
+
+}
+.button::before {
+      position: absolute;
+      content: '';
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: #f9c4d2;
+      border-radius: inherit;
+      box-shadow: 0 0 0 2px #b18597, 0 0.625em 0 0 #ffe3e2;
+      transform: translate3d(0, 0.75em, -1em);
+      transition: transform 150ms cubic-bezier(0, 0, 0.58, 1), box-shadow 150ms cubic-bezier(0, 0, 0.58, 1);
+}
+.button:hover {
+	background: #ffe9e9;
+	transform: translate(0, 0.25em);
+}
+.button:hover::before {
+	box-shadow: 0 0 0 2px #b18597, 0 0.5em 0 0 #ffe3e2;
+	transform: translate3d(0, 0.5em, -1em);
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.button-container {
+	height: 80px;
+}
+
+
+/*https://codepen.io/koriolis/pen/euAEg*/
+.button2 {
+	position: relative;
+	padding: 10px 40px;
+	margin: 0px 10px 10px 0px;
+	cursor: pointer;
+	float: left;
+	border-radius: 8px;
+	font-family: "Comfortaa", cursive;
+	font-size: 25px;
+	color: #FFF;
+	text-decoration: none;
+	/*width: var(--button-min-width);*/
+    min-width: var(--button-min-width);
+    /*
+	background-color: #82BF56;
+    border-bottom: 5px solid #669644;
+	text-shadow: 0px -2px #669644;	
+    */
+    background-color: #ff9048;
+    background-color: #537CB8;
+    background-color: #27cbd8;
+
+    border-bottom: 5px solid #bd5918;
+    border-bottom: 5px solid #11438E;
+    border-bottom: 5px solid #1c9099;
+    text-shadow: -1px 2px #bd5918;	
+    
+}
+.button2:hover {
+    background-color: #ef8743;
+    background-color: #2457A2;
+    background-color: #1c9099;
+}
+.button2:active
+{
+	transform: translate(0px,5px);
+    -webkit-transform: translate(0px,5px);
+	border-bottom: 1px solid;
+	
+	transition: all 0.1s;
+	-webkit-transition: all 0.1s;	
+}
+.button2:focus {outline:0;}
+
+.header {
+    font-family: "OldLondon";
+    text-align: center;
+    font-size: 60px;
+    letter-spacing: 5px;
+    margin: 0;
+    color: #616d76;
+    color: #556068;
+    text-shadow: 5px 5px 1px #aaa;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: auto auto auto;
+}
+
+.stat-name {
+    color: #333333;
+}
+.stat-value {
+	font-weight: 600;    
+}
+
+.left-side {
+	justify-self: right;
+	align-self: center;
+	font-size: 1.05em;
+    text-align: center;
+    padding: 30px;
+    background: rgba(100, 100, 100, 0.3);
+}
+.left-side .stat {
+    margin-bottom: 10px;
+}
+
+.top-card-container {
+	justify-self: center;
+}
+
+.right-side {
+	justify-self: left;
+	align-self: center;
+
+}
+
+.info-bar {
+    margin: 15px auto;
+    width: 80%;
+	text-align: center;
+	padding: 15px;
+	font-size: 1.2em;
+    background: rgba(100, 100, 100, 0.5);
+    color: #000;
+}
+
+.hand-bar {
   display: flex;
-  flex-direction: column;
-  align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.card {
+  background-color: var(--card-bgcolor);
+  width: var(--card-width);
+  min-height: var(--card-height);
+  padding: var(--card-padding);
+  margin: var(--card-margin);
+  
+  -webkit-box-shadow: var(--card-shadow);
+  box-shadow: var(--card-shadow);
+  
+  border: 3px solid #ff9048;
+  
+  color: #ffffff;
+  cursor: pointer;
+}
+.card.indian {
+    background-color: #E41B37;
+    background-color: #F6677B;
+    border: 3px solid #F6677B;
+}
+.card.selected {
+    /*
+    background-color: var(--card-bgcolor-selected);
+    transform: translate(0, -10px);
+    */
+    border: 3px solid #1F529E;
+}
+.card:hover {
+    /*transform: translate(0, 5px);*/
+    box-shadow: none;
+}
+.card.selected:hover {
+    /*transform: translate(0, -5px);*/
+}
+.card .card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;    
+    transition: transform 0.8s;
+    transform-style: preserve-3d;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.card.flipped .card-inner {
+    transform: rotateY(180deg);
+}
+
+.card-front, .card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;    
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;    
+}
+
+.card-front {
+}
+.card-back {
+    background-color: var(--card-bgcolor);
+    transform: rotateY(180deg);
+}
+.card.selected .card-back {
+    background-color: var(--card-bgcolor-selected);
+}
+
+.card .title {
+	font-size: 1.3em;
+	font-weight: 600;
+	text-align: center;
+	padding: 10px;
+	height: 50px;
+}
+
+.card .inner-box {
+	margin-top: 10px;
+	padding: 5px;
+	border-radius: 10px;
+	background-color: var(--card-inner-box-bgcolor);
+	min-height: var(--card-inner-box-height);
+}
+.card.indian .inner-box {
+    background-color: #E41B37;
+}
+
+.card .force-box {
+	padding: 5px;
+	border: 1px solid #ffffff;
+	width: 50px;
+	margin: 5px auto;
+	margin-top: 15px;
+	text-align: center;
+	font-size: 2em;
+	font-weight: 600;
+}
+
+.card .enemy-force-box {
+	border: 2px dashed #ffffff;	
+}
+
+.card .cardtype {
+	margin-top: 20px;
+	text-align: center;
+}
+
+hr {
+   display: block;
+   border: none;
+   height: 3px;
+   background-color: var(--card-hr-color);
+   margin: 0px;
+}
+
+.menubar {
+    margin-top: 20px;
+    text-align: center;
+}
+.menubar img {
+    margin-right: 20px;
+    cursor: pointer;
+}
+.menubar img:hover {
+    filter: hue-rotate(180deg);
+}
+
+.cortez-image {
+    float: left;
+    border: 2px solid #777;
+    padding: 4px;
+}
+
+.modal {
+    background: rgba(0, 0, 0, 0.5);
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.modal-inner {
+    background-color: #ffffff;
+    background-color: #d4ecfd;
+    width: 60%;
+    text-align: center;
+    padding: 50px 40px;
+    border-radius: 10px;
+    z-index: 1;
+}
+.modal-inner .header {
+    font-family: "OldLondon";
+    text-align: center;
+    font-size: 60px;
+    letter-spacing: 5px;
+    margin: 0 0 20px 0;
+    color: #556068;
+}
+.modal-inner .button-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal .howtoplay {
+    text-align: left;
+}
+
+.gameover {
+    background: rgba(0, 0, 0, 0.5);
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    line-height: 1.3;
+}
+
+.gameover > div {
+    width: 60%;
+    text-align: center;
+    padding: 0 40px;
+    border-radius: 10px;
+    z-index: 1;
+    color: #fff;
+    font-size: 60px;
+}
+  
+.gameover.win > div {
+    background: rgb(141, 195, 81);
+}
+.gameover.lose > div {
+    background: rgb(218, 81, 111);
+}
+
+.gameover-content {
+    /*
+    display: flex;
+    justify-content: center;
+    */
+}
+
+.gameover-content p {
+    margin: 40px 15px 30px 0;
+    /*
+    display: flex;
+    align-items: center;
+    */
+}
+
+.gameover button {
+    margin-bottom: -5%;
+    width: 100%;
+    display: block;
+    border: none;
+    border-radius: 10px;
+    padding: 25px;
+    font-size: 30px;
+    cursor: pointer;
+    flex-shrink: 1;
+    background: #fa65ff;
+    background-color: #27cbd8;
+    color: #fdedfd;
+}
+.gameover button:hover {
+    background-color: #7dd1d8;
+}
+
+/*
+.army {
+    color: #E41B37;
+}
+.gold {
+    color: #ffd904;
+}
+*/
+.flashmessage {
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+}
+
+.credits {
+    font-size: 12px;
 }
