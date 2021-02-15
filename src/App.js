@@ -12,8 +12,8 @@ import Introduction from './components/Introduction';
 import HowToPlay from './components/howtoplay';
 import FlashMessages from './components/Flashmessages';
 
-import imgMenu from './static/scroll2.png';
-import imgHelp from './static/help2.png';
+import imgMenu from './static/scroll.png';
+import imgHelp from './static/help.png';
 
 import './App.css';
 

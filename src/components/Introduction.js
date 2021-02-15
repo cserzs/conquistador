@@ -26,7 +26,9 @@ export default function Introduction({isActiveGame, showHowToCallback, startCall
                 <br />
                 <p>The game based a <a href="https://www.angelfire.com/games2/warpspawn/Cortez.html" target="_blank" rel="noreferrer">solo card game</a>.</p>
                 <p>Programmed by Zsolt Csernai<br />
-                    csernai.zsolt at gmail.com</p>
+                    csernai.zsolt at gmail.com<br/>
+                    <a href="https://github.com/cserzs/conquistador" target="_blank" rel="noreferrer">Source</a>
+                </p>
                 <p className="credits"><b>Credits</b><br/>
                     Scroll image by stefano corradetti from the <a href="https://thenounproject.com/" target="_blank" rel="noreferrer">Noun Project</a><br/>
                     Help image from <a href="https://game-icons.net/" target="_blank" rel="noreferrer">game-icon.net</a>.<br/>
