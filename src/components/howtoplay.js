@@ -1,8 +1,5 @@
 import {motion} from 'framer-motion';
 
-/*
- animate={{ x: 0, y: 0}} initial={{x: 500, y: -500}}
-*/
 export default function HowToPlay({closeCallback}) {
     return (
         <div className="modal">
